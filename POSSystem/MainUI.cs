@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace POSSystem
 {
-    public partial class Form1 : Form
+    public partial class MainUI : Form
     {
-        public Form1()
+        public MainUI()
         {
             InitializeComponent();
+        }
+
+        private void adminButton_Click(object sender, EventArgs e)
+        {
+            Admin adminForm = new Admin();
+            adminForm.ShowDialog();
         }
     }
 }
