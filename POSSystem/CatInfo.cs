@@ -48,7 +48,7 @@ namespace POSSystem
             else
             {
                 // Add him in the dictionary
-                this.catDictionary.Add(name, new Category(name));
+                //this.catDictionary.Add(name, new Category(name));
                 Console.WriteLine("Friend added successfully.");
             } // end if
         } // end public bool AddFriend(string name, string email)
@@ -132,10 +132,10 @@ namespace POSSystem
             // If we have saved information about friends
             if (this.catDictionary.Count > 0)
             {
-                Console.WriteLine("Name, Email");
+                //Console.WriteLine("Name, Email");
                 foreach (Category category in this.catDictionary.Values)
                 {
-                    Console.WriteLine(category.Name);
+                    Console.WriteLine(category.name);
                 } // end foreach
             }
             else

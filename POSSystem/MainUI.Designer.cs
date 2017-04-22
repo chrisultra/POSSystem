@@ -34,7 +34,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.catButton3 = new System.Windows.Forms.Button();
-            this.caButton4 = new System.Windows.Forms.Button();
+            this.catButton4 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
@@ -49,6 +49,8 @@
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.adminButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -61,7 +63,7 @@
             // 
             // catButton1
             // 
-            this.catButton1.Location = new System.Drawing.Point(490, 12);
+            this.catButton1.Location = new System.Drawing.Point(0, 0);
             this.catButton1.Name = "catButton1";
             this.catButton1.Size = new System.Drawing.Size(128, 37);
             this.catButton1.TabIndex = 1;
@@ -97,21 +99,21 @@
             // 
             // catButton3
             // 
-            this.catButton3.Location = new System.Drawing.Point(758, 12);
+            this.catButton3.Location = new System.Drawing.Point(268, 0);
             this.catButton3.Name = "catButton3";
             this.catButton3.Size = new System.Drawing.Size(128, 37);
             this.catButton3.TabIndex = 6;
             this.catButton3.Text = "Category 3";
             this.catButton3.UseVisualStyleBackColor = true;
             // 
-            // caButton4
+            // catButton4
             // 
-            this.caButton4.Location = new System.Drawing.Point(892, 12);
-            this.caButton4.Name = "caButton4";
-            this.caButton4.Size = new System.Drawing.Size(128, 37);
-            this.caButton4.TabIndex = 7;
-            this.caButton4.Text = "Category 4";
-            this.caButton4.UseVisualStyleBackColor = true;
+            this.catButton4.Location = new System.Drawing.Point(402, 0);
+            this.catButton4.Name = "catButton4";
+            this.catButton4.Size = new System.Drawing.Size(128, 37);
+            this.catButton4.TabIndex = 7;
+            this.catButton4.Text = "Category 4";
+            this.catButton4.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -151,7 +153,7 @@
             // 
             // catButton2
             // 
-            this.catButton2.Location = new System.Drawing.Point(624, 12);
+            this.catButton2.Location = new System.Drawing.Point(134, 0);
             this.catButton2.Name = "catButton2";
             this.catButton2.Size = new System.Drawing.Size(128, 37);
             this.catButton2.TabIndex = 2;
@@ -234,11 +236,23 @@
             this.adminButton.UseVisualStyleBackColor = true;
             this.adminButton.Click += new System.EventHandler(this.adminButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.catButton1);
+            this.panel1.Controls.Add(this.catButton2);
+            this.panel1.Controls.Add(this.catButton3);
+            this.panel1.Controls.Add(this.catButton4);
+            this.panel1.Location = new System.Drawing.Point(490, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(530, 37);
+            this.panel1.TabIndex = 22;
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 582);
+            this.ClientSize = new System.Drawing.Size(1037, 588);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.adminButton);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button18);
@@ -252,17 +266,14 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.caButton4);
-            this.Controls.Add(this.catButton3);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.catButton2);
-            this.Controls.Add(this.catButton1);
             this.Controls.Add(this.richTextBox1);
             this.Name = "MainUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EZPZ POS";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -275,7 +286,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button catButton3;
-        private System.Windows.Forms.Button caButton4;
+        private System.Windows.Forms.Button catButton4;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
@@ -290,6 +301,7 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button adminButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

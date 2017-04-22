@@ -9,24 +9,7 @@ namespace POSSystem
     [Serializable]
     public class Category
     {
-        private string name;
-
-        public Category(string name)
-        {
-            this.name = name;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
-        }
+        public int id { get; set; }
+        public string name { get; set; }
     } 
 }
