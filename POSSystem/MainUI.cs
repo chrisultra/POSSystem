@@ -13,21 +13,24 @@ namespace POSSystem
 {
     public partial class MainUI : Form
     {
-        const string FILENAME = "categories2.dat";
+        const string CATSFILE = "categories.dat";
+
+        List<Button> buttonList = new List<Button>();
+
+        string listEntry;
+
+        List<string> cats = File.ReadAllLines(CATSFILE).ToList();
+
+        int catClicker = 1;
 
 
-        List<string> lines = new List<string>();
 
 
         public MainUI()
         {
             InitializeComponent();
             load();
-
-            // instantiate a list (at the form class level)
-            List<Button> buttonList = new List<Button>();
-
-            List<string> lines = File.ReadAllLines(FILENAME).ToList();
+          
 
             // add each button to the list (put this in form load method)
             buttonList.Add(catButton1);
@@ -35,15 +38,14 @@ namespace POSSystem
             buttonList.Add(catButton3);
             buttonList.Add(catButton4);
 
-            string listEntry = lines[0];
-            buttonList[0].Text = listEntry;
-            listEntry = lines[1];
-            buttonList[1].Text = listEntry;
-            listEntry = lines[2];
-            buttonList[2].Text = listEntry;
-            listEntry = lines[3];
-            buttonList[3].Text = listEntry;
+            //int test = buttonList.Count;
+            //Console.Write(test);
 
+            for (int i = 0; i < buttonList.Count; i++)
+            {
+                listEntry = cats[i];
+                buttonList[i].Text = listEntry;
+            }
         }
 
         private void adminButton_Click(object sender, EventArgs e)
@@ -54,22 +56,60 @@ namespace POSSystem
         }
 
 
+
         public void load()
         {
-
-            using (FileStream fs = new FileStream(FILENAME, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(CATSFILE, FileMode.Open, FileAccess.Read))
             using (StreamReader r = new StreamReader(fs))
             {
                 string line;
                 while ((line = r.ReadLine()) != null)
                 {
                     //catButton1.Text = line;
-                }
-                
+                }    
             }
-
         }
 
-    }
 
+
+        private void scrollRightButton_Click(object sender, EventArgs e)
+        {
+            int threshhold = cats.Count - 3;
+
+            if (catClicker < threshhold)
+            {
+                for (int i = 0; i < buttonList.Count; i++)
+                {
+                    listEntry = cats[i + catClicker];
+                    buttonList[i].Text = listEntry;
+                }
+                catClicker++;
+  
+
+                Console.Write(catClicker);
+ 
+            }
+        }
+
+
+
+        private void scrollLeftButton_Click(object sender, EventArgs e)
+        {
+
+            if (catClicker >= 2)
+            {
+
+
+                int cc = catClicker-1;
+                Console.Write(cc);
+
+                for (int i = 0; i < buttonList.Count; i++)
+                {
+                    listEntry = cats[i + cc];
+                    buttonList[i].Text = listEntry;
+                }
+                catClicker--;
+            }
+        }
+    }
 }

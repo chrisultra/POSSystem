@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Category.cs" />
     <Compile Include="CatInfo.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="MainUI.cs">
       <SubType>Form</SubType>
     </Compile>

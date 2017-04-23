@@ -31,8 +31,8 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.catButton1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.scrollLeftButton = new System.Windows.Forms.Button();
+            this.scrollRightButton = new System.Windows.Forms.Button();
             this.catButton3 = new System.Windows.Forms.Button();
             this.catButton4 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -79,23 +79,25 @@
             this.button3.Text = "Pay";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // scrollLeftButton
             // 
-            this.button4.Location = new System.Drawing.Point(930, 328);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 37);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "<";
-            this.button4.UseVisualStyleBackColor = true;
+            this.scrollLeftButton.Location = new System.Drawing.Point(930, 328);
+            this.scrollLeftButton.Name = "scrollLeftButton";
+            this.scrollLeftButton.Size = new System.Drawing.Size(42, 37);
+            this.scrollLeftButton.TabIndex = 4;
+            this.scrollLeftButton.Text = "<";
+            this.scrollLeftButton.UseVisualStyleBackColor = true;
+            this.scrollLeftButton.Click += new System.EventHandler(this.scrollLeftButton_Click);
             // 
-            // button5
+            // scrollRightButton
             // 
-            this.button5.Location = new System.Drawing.Point(978, 328);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 37);
-            this.button5.TabIndex = 5;
-            this.button5.Text = ">";
-            this.button5.UseVisualStyleBackColor = true;
+            this.scrollRightButton.Location = new System.Drawing.Point(978, 328);
+            this.scrollRightButton.Name = "scrollRightButton";
+            this.scrollRightButton.Size = new System.Drawing.Size(42, 37);
+            this.scrollRightButton.TabIndex = 5;
+            this.scrollRightButton.Text = ">";
+            this.scrollRightButton.UseVisualStyleBackColor = true;
+            this.scrollRightButton.Click += new System.EventHandler(this.scrollRightButton_Click);
             // 
             // catButton3
             // 
@@ -266,8 +268,8 @@
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.scrollRightButton);
+            this.Controls.Add(this.scrollLeftButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.richTextBox1);
             this.Name = "MainUI";
@@ -283,8 +285,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button catButton1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button scrollLeftButton;
+        private System.Windows.Forms.Button scrollRightButton;
         private System.Windows.Forms.Button catButton3;
         private System.Windows.Forms.Button catButton4;
         private System.Windows.Forms.Button button8;
