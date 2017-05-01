@@ -12,87 +12,62 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Globalization;
 
 namespace POSSystem
 {
     public partial class Admin : Form
     {
 
+        // Declare datafiles
         const string CATSFILE = "categories.dat";
         const string ITEMSFILE = "items.dat";
 
+        // Object lists
         List<Item> itemList = new List<Item>();
         List<Item> itemC = new List<Item>();
 
+        // Variable to read break in data files
         const char DELIM = ',';
+
         FileStream file = null;
         StreamReader reader = null;
-        
 
+        // TODO: varaible for updating parent form (MainUI)
+        MainUI _owner;
 
-        public Admin()
+        public Admin(MainUI owner)
         {
+            // Call initial load methods
             InitializeComponent();
-
             load();
             load2();
+            loadLVColumnHeaders();
+
+            // Read cateogry file
             List<string> lines = File.ReadAllLines(CATSFILE).ToList();
 
+            // Populate combobox
             catComboBox.DataSource = lines;
 
-            //itemsListView.View = View.Details;
+            // Declare and save variable for setting tax rate to properties settings
+            // Format it and save to string
+            double taxRate = Properties.Settings.Default.TaxRate;
+            double taxRateTemp = taxRate * 100;
+            taxRateTextBox.Text = taxRateTemp.ToString();
 
-            //itemsListView.Columns.Add("ID");
-            //itemsListView.Columns.Add("Item Name");
-            //itemsListView.Columns.Add("Cost");
-            //itemsListView.Columns.Add("Category");
-
-
-
-            //itemsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            //itemsListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-
-
-            // Declare and construct the ColumnHeader objects.
-            ColumnHeader header1, header2, header3, header4;
-            header1 = new ColumnHeader();
-            header2 = new ColumnHeader();
-            header3 = new ColumnHeader();
-            header4 = new ColumnHeader();
-
-            // Set the text, alignment and width for each column header.
-            header1.Text = "ID";
-            header1.TextAlign = HorizontalAlignment.Left;
-            header1.Width = 80;
-
-            header2.TextAlign = HorizontalAlignment.Left;
-            header2.Text = "Item Name";
-            header2.Width = 250;
-
-            header3.TextAlign = HorizontalAlignment.Left;
-            header3.Text = "Cost";
-            header3.Width = 100;
-
-            header4.TextAlign = HorizontalAlignment.Left;
-            header4.Text = "Category";
-            header4.Width = 180;
-
-            // Add the headers to the ListView control.
-            itemsListView.Columns.Add(header1);
-            itemsListView.Columns.Add(header2);
-            itemsListView.Columns.Add(header3);
-            itemsListView.Columns.Add(header4);
-
-            // Specify that each item appears on a separate line.
-            itemsListView.View = View.Details;
-
-            //foreach (ListViewItem item in itemsListView.Items)
-            //{
-            //    item.ForeColor = Color.Red;
-            //}
-            itemsListView.FullRowSelect = true;
-
+            //_owner = owner;
+            //this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
         }
+
+
+        // Not implemented yet
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            _owner.loadCatButtons();
+        }
+
 
 
         private void addCategoryButton_Click(object sender, EventArgs e)
@@ -104,7 +79,7 @@ namespace POSSystem
 
                 if (string.IsNullOrEmpty(catName) == false)
                 {
-                    catName = FirstCharToUpper(catName);
+                    catName = CapitalizeWords(catName);
                     sw.WriteLine(catName);
                     catListBox.Items.Add(catName);
                     catNameTextBox.Clear();
@@ -114,12 +89,15 @@ namespace POSSystem
                     MessageBox.Show("Please enter a category",
                         "Advisory");
                 }
+
+                
             }
         }
 
 
         public void load()
         {
+            // Load categories
             using (FileStream fs = new FileStream(CATSFILE, FileMode.Open, FileAccess.Read))
             using (StreamReader r = new StreamReader(fs))
             {
@@ -132,14 +110,32 @@ namespace POSSystem
         }
 
 
-        public static string FirstCharToUpper(string input)
+
+        public static string CapitalizeWords(string input)
         {
-            if (String.IsNullOrEmpty(input))
-            {
-                MessageBox.Show("Please fill in all fields!", "Advisory");
+            if (input == null)
+                throw new ArgumentNullException("input");
+            if (input.Length == 0)
                 return input;
+
+            StringBuilder sb = new StringBuilder(input.Length);
+            // Upper the first char.
+            sb.Append(char.ToUpper(input[0]));
+            for (int i = 1; i < input.Length; i++)
+            {
+                // Get the current char.
+                char c = input[i];
+
+                // Upper if after a space.
+                if (char.IsWhiteSpace(input[i - 1]))
+                    c = char.ToUpper(c);
+                else
+                    c = char.ToLower(c);
+
+                sb.Append(c);
             }
-            return input.First().ToString().ToUpper() + input.Substring(1).ToLower();
+
+            return sb.ToString();
         }
 
 
@@ -159,7 +155,7 @@ namespace POSSystem
 
                 if (string.IsNullOrEmpty(itemName) == false)
                 {
-                    itemName = FirstCharToUpper(itemName);
+                    itemName = CapitalizeWords(itemName);
                     swItems.WriteLine(id + DELIM + itemName + DELIM + itemCost + DELIM + catCB);
 
                     itemsListView.Items.Add(new ListViewItem(new string[] { id, itemName, itemCost, catCB }));
@@ -170,13 +166,10 @@ namespace POSSystem
                 }
                 else
                 {
-                    MessageBox.Show("Please complete all fields",
-                        "Advisory");
-                }
-                
+                    MessageBox.Show("Please complete all fields", "Advisory");
+                }       
             }
         }
-
 
 
         public void WriteToConsole(IEnumerable item)
@@ -212,14 +205,74 @@ namespace POSSystem
                         }
 
                     WriteToConsole(itemList);
-
                 }
             }
-            else {
-
+            else
+            {
                 return;
             }
+        }
 
+
+        public void loadLVColumnHeaders()
+        {
+            // Declare and construct the ColumnHeader objects.
+            ColumnHeader header1, header2, header3, header4;
+            header1 = new ColumnHeader();
+            header2 = new ColumnHeader();
+            header3 = new ColumnHeader();
+            header4 = new ColumnHeader();
+
+            // Set the text, alignment and width for each column header.
+            header1.Text = "ID";
+            header1.TextAlign = HorizontalAlignment.Left;
+            header1.Width = 80;
+
+            header2.TextAlign = HorizontalAlignment.Left;
+            header2.Text = "Item Name";
+            header2.Width = 250;
+
+            header3.TextAlign = HorizontalAlignment.Left;
+            header3.Text = "Cost";
+            header3.Width = 100;
+
+            header4.TextAlign = HorizontalAlignment.Left;
+            header4.Text = "Category";
+            header4.Width = 160;
+
+            // Add the headers to the ListView control.
+            itemsListView.Columns.Add(header1);
+            itemsListView.Columns.Add(header2);
+            itemsListView.Columns.Add(header3);
+            itemsListView.Columns.Add(header4);
+
+            // Specify that each item appears on a separate line.
+            itemsListView.View = View.Details;
+
+            itemsListView.FullRowSelect = true;
+        }
+
+
+
+
+
+
+        private void saveTaxRateButton_Click(object sender, EventArgs e)
+        {
+            if ((taxRateTextBox.Text == "") || (taxRateTextBox.Text == null))
+            {
+                MessageBox.Show("Please enter a tax rate", "Advisory");
+                return;
+            }
+            else {            
+            string taxRateTemp = taxRateTextBox.Text;
+            double taxRateDub = double.Parse(taxRateTemp, CultureInfo.InvariantCulture);
+            double taxRate = taxRateDub / 100;
+            Properties.Settings.Default.TaxRate = taxRate;
+            Properties.Settings.Default.Save();
+
+            MessageBox.Show("The tax rate has been saved", "Success");
+            }
         }
     }
 }

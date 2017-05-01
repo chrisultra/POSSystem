@@ -49,15 +49,27 @@
             this.addCategoryButton = new System.Windows.Forms.Button();
             this.catNameTextBox = new System.Windows.Forms.TextBox();
             this.catListBox = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.taxRateTextBox = new System.Windows.Forms.TextBox();
+            this.taxRateLabel = new System.Windows.Forms.Label();
+            this.percentLabel = new System.Windows.Forms.Label();
+            this.saveTaxRateButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -66,6 +78,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage1.Controls.Add(this.itemsListView);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
@@ -74,18 +87,19 @@
             this.tabPage1.Controls.Add(this.addItemButton);
             this.tabPage1.Controls.Add(this.catComboBox);
             this.tabPage1.Controls.Add(this.itemNameTextBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 36);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(654, 374);
+            this.tabPage1.Size = new System.Drawing.Size(654, 360);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Items";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // itemsListView
             // 
+            this.itemsListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemsListView.HideSelection = false;
             this.itemsListView.Location = new System.Drawing.Point(15, 15);
+            this.itemsListView.MultiSelect = false;
             this.itemsListView.Name = "itemsListView";
             this.itemsListView.Size = new System.Drawing.Size(618, 211);
             this.itemsListView.TabIndex = 9;
@@ -94,6 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(318, 258);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
@@ -103,6 +118,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(22, 259);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
@@ -111,6 +127,7 @@
             // 
             // costTextBox
             // 
+            this.costTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.costTextBox.Location = new System.Drawing.Point(371, 253);
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(100, 20);
@@ -119,6 +136,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(68, 312);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
@@ -127,6 +145,7 @@
             // 
             // addItemButton
             // 
+            this.addItemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addItemButton.Location = new System.Drawing.Point(518, 253);
             this.addItemButton.Name = "addItemButton";
             this.addItemButton.Size = new System.Drawing.Size(100, 23);
@@ -137,6 +156,7 @@
             // 
             // catComboBox
             // 
+            this.catComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catComboBox.FormattingEnabled = true;
             this.catComboBox.Location = new System.Drawing.Point(150, 309);
             this.catComboBox.Name = "catComboBox";
@@ -145,6 +165,7 @@
             // 
             // itemNameTextBox
             // 
+            this.itemNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemNameTextBox.Location = new System.Drawing.Point(71, 253);
             this.itemNameTextBox.Name = "itemNameTextBox";
             this.itemNameTextBox.Size = new System.Drawing.Size(200, 20);
@@ -152,20 +173,22 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.addCategoryButton);
             this.tabPage2.Controls.Add(this.catNameTextBox);
             this.tabPage2.Controls.Add(this.catListBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 36);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(654, 374);
+            this.tabPage2.Size = new System.Drawing.Size(654, 360);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Categories";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // addCategoryButton
             // 
-            this.addCategoryButton.Location = new System.Drawing.Point(123, 151);
+            this.addCategoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addCategoryButton.Location = new System.Drawing.Point(113, 159);
             this.addCategoryButton.Name = "addCategoryButton";
             this.addCategoryButton.Size = new System.Drawing.Size(96, 23);
             this.addCategoryButton.TabIndex = 2;
@@ -175,18 +198,91 @@
             // 
             // catNameTextBox
             // 
-            this.catNameTextBox.Location = new System.Drawing.Point(86, 83);
+            this.catNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catNameTextBox.Location = new System.Drawing.Point(73, 84);
             this.catNameTextBox.Name = "catNameTextBox";
             this.catNameTextBox.Size = new System.Drawing.Size(180, 20);
             this.catNameTextBox.TabIndex = 1;
             // 
             // catListBox
             // 
+            this.catListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catListBox.FormattingEnabled = true;
-            this.catListBox.Location = new System.Drawing.Point(366, 18);
+            this.catListBox.ItemHeight = 20;
+            this.catListBox.Location = new System.Drawing.Point(322, 38);
             this.catListBox.Name = "catListBox";
-            this.catListBox.Size = new System.Drawing.Size(259, 199);
+            this.catListBox.Size = new System.Drawing.Size(275, 284);
             this.catListBox.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(113, 209);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Delete Category";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.groupBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 36);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(654, 360);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Settings";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // taxRateTextBox
+            // 
+            this.taxRateTextBox.Location = new System.Drawing.Point(153, 43);
+            this.taxRateTextBox.Name = "taxRateTextBox";
+            this.taxRateTextBox.Size = new System.Drawing.Size(42, 29);
+            this.taxRateTextBox.TabIndex = 0;
+            // 
+            // taxRateLabel
+            // 
+            this.taxRateLabel.AutoSize = true;
+            this.taxRateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.taxRateLabel.Location = new System.Drawing.Point(65, 47);
+            this.taxRateLabel.Name = "taxRateLabel";
+            this.taxRateLabel.Size = new System.Drawing.Size(81, 20);
+            this.taxRateLabel.TabIndex = 1;
+            this.taxRateLabel.Text = "Tax Rate :";
+            // 
+            // percentLabel
+            // 
+            this.percentLabel.AutoSize = true;
+            this.percentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.percentLabel.Location = new System.Drawing.Point(201, 47);
+            this.percentLabel.Name = "percentLabel";
+            this.percentLabel.Size = new System.Drawing.Size(23, 20);
+            this.percentLabel.TabIndex = 2;
+            this.percentLabel.Text = "%";
+            // 
+            // saveTaxRateButton
+            // 
+            this.saveTaxRateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveTaxRateButton.Location = new System.Drawing.Point(85, 95);
+            this.saveTaxRateButton.Name = "saveTaxRateButton";
+            this.saveTaxRateButton.Size = new System.Drawing.Size(124, 23);
+            this.saveTaxRateButton.TabIndex = 3;
+            this.saveTaxRateButton.Text = "Save Tax Rate";
+            this.saveTaxRateButton.UseVisualStyleBackColor = true;
+            this.saveTaxRateButton.Click += new System.EventHandler(this.saveTaxRateButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.taxRateTextBox);
+            this.groupBox1.Controls.Add(this.saveTaxRateButton);
+            this.groupBox1.Controls.Add(this.taxRateLabel);
+            this.groupBox1.Controls.Add(this.percentLabel);
+            this.groupBox1.Location = new System.Drawing.Point(65, 52);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(290, 150);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
             // 
             // Admin
             // 
@@ -194,14 +290,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 424);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Admin";
+            this.Text = "EZPZ POS - Admin";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,5 +322,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox costTextBox;
         private System.Windows.Forms.ListView itemsListView;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox taxRateTextBox;
+        private System.Windows.Forms.Button saveTaxRateButton;
+        private System.Windows.Forms.Label taxRateLabel;
+        private System.Windows.Forms.Label percentLabel;
     }
 }
