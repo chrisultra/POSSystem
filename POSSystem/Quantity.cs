@@ -16,6 +16,7 @@ namespace POSSystem
         StringBuilder sb = new StringBuilder();
 
 
+
         public Quantity()
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace POSSystem
             digitButton9.Click += new EventHandler(this.digitButtonClick);
         }
 
-        void digitButtonClick(object sender, EventArgs e)
+        public void digitButtonClick(object sender, EventArgs e)
         {
             Button button = sender as Button;
 
@@ -52,6 +53,21 @@ namespace POSSystem
             Console.WriteLine(button.Text);
             this.digitTextBox.Text = sb.ToString();
 
+        }
+
+        private void enterButton_Click(object sender, EventArgs e)
+        {
+
+            string sbString = sb.ToString();
+
+            //initialize a Form1, refer back to the .Owner properties 
+            MainUI parent = (MainUI)this.Owner;
+
+            //call the updatetext method
+            parent.updateQuantity(sbString);
+
+            //closing the form is optional.
+            this.Close();
         }
     }
 }

@@ -599,9 +599,82 @@ namespace POSSystem
 
         private void qtyButton_Click(object sender, EventArgs e)
         {
-            // Open the quantity form
-            Quantity qtyForm = new Quantity();
-            qtyForm.ShowDialog();
+
+            using (Quantity qtyForm = new Quantity())
+            {
+                qtyForm.ShowDialog(this);
+            }
+
+
+
+
+        }
+
+
+
+        public void updateQuantity(string sbString)
+        {
+
+            
+
+            if (mainListView.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+
+
+    
+                ListViewItem item = mainListView.SelectedItems[0];
+                item.SubItems[3].Text = sbString;
+
+
+            shoppingCart.Where(w => w.num == numVar).ToList().ForEach(s => s.qty = sbString);
+
+
+            subDub = 0;
+
+
+            for (var i = 0; i < shoppingCart.Count; i++)
+            {
+                string numString = shoppingCart[i].num;
+                string costLoopString = shoppingCart[i].cost;
+                string qtyString = shoppingCart[i].qty;
+                double costLoopDub = double.Parse(costLoopString, CultureInfo.InvariantCulture);
+                double qtyDub = double.Parse(qtyString, CultureInfo.InvariantCulture);
+                subDub = subDub + (costLoopDub * qtyDub);
+                Console.WriteLine("# is {0}, Amount is {1} and quantity is {2}", shoppingCart[i].num, shoppingCart[i].cost, shoppingCart[i].qty);
+                int j = i + 1;
+                shoppingCart[i].num = j.ToString();
+                mainListView.Items[i].SubItems[0].Text = j.ToString();
+                Console.WriteLine("# is {0}, Amount is {1} and quantity is {2}", shoppingCart[i].num, shoppingCart[i].cost, shoppingCart[i].qty);
+            }
+
+            subTotalLabel.Text = subDub.ToString("C");
+
+            // Get tax rate from property settings
+            double taxRate = Properties.Settings.Default.TaxRate;
+
+            taxDub = 0;
+            totDub = 0;
+
+            // Calculate tax
+            double taxTemp = subDub * taxRate;
+            taxDub = taxTemp;
+            taxLabel.Text = taxDub.ToString("C");
+
+            // Calculate total sale
+            double totTemp = subDub + taxTemp;
+            totDub = totTemp + totDub;
+            totalLabel.Text = totDub.ToString("C");
+
+            Deselector();
+
+
+
+            mainListView.SelectedItems.Clear();
+
+
         }
     }
 }

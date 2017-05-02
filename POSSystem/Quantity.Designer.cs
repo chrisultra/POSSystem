@@ -61,6 +61,7 @@
             this.enterButton.TabIndex = 1;
             this.enterButton.Text = "Enter";
             this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Click += new System.EventHandler(this.enterButton_Click);
             // 
             // digitButton6
             // 
