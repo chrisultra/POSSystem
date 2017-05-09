@@ -62,10 +62,11 @@
             this.itemButton14 = new System.Windows.Forms.Button();
             this.itemButton13 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.qtyButton = new System.Windows.Forms.Button();
             this.removeItemButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.qtyButton = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +96,7 @@
             // 
             this.scrollLeftButton.Location = new System.Drawing.Point(831, 425);
             this.scrollLeftButton.Name = "scrollLeftButton";
-            this.scrollLeftButton.Size = new System.Drawing.Size(92, 37);
+            this.scrollLeftButton.Size = new System.Drawing.Size(92, 40);
             this.scrollLeftButton.TabIndex = 4;
             this.scrollLeftButton.Text = "<";
             this.scrollLeftButton.UseVisualStyleBackColor = true;
@@ -105,7 +106,7 @@
             // 
             this.scrollRightButton.Location = new System.Drawing.Point(929, 425);
             this.scrollRightButton.Name = "scrollRightButton";
-            this.scrollRightButton.Size = new System.Drawing.Size(92, 37);
+            this.scrollRightButton.Size = new System.Drawing.Size(92, 40);
             this.scrollRightButton.TabIndex = 5;
             this.scrollRightButton.Text = ">";
             this.scrollRightButton.UseVisualStyleBackColor = true;
@@ -391,6 +392,17 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             // 
+            // qtyButton
+            // 
+            this.qtyButton.Enabled = false;
+            this.qtyButton.Location = new System.Drawing.Point(6, 54);
+            this.qtyButton.Name = "qtyButton";
+            this.qtyButton.Size = new System.Drawing.Size(90, 29);
+            this.qtyButton.TabIndex = 31;
+            this.qtyButton.Text = "Quantity";
+            this.qtyButton.UseVisualStyleBackColor = true;
+            this.qtyButton.Click += new System.EventHandler(this.qtyButton_Click);
+            // 
             // removeItemButton
             // 
             this.removeItemButton.Enabled = false;
@@ -404,38 +416,38 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(589, 425);
+            this.button2.Location = new System.Drawing.Point(637, 425);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 37);
+            this.button2.Size = new System.Drawing.Size(92, 41);
             this.button2.TabIndex = 36;
             this.button2.Text = "Item";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(491, 425);
+            this.button1.Location = new System.Drawing.Point(539, 425);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 37);
+            this.button1.Size = new System.Drawing.Size(92, 41);
             this.button1.TabIndex = 35;
             this.button1.Text = "Category";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // qtyButton
+            // button3
             // 
-            this.qtyButton.Enabled = false;
-            this.qtyButton.Location = new System.Drawing.Point(6, 54);
-            this.qtyButton.Name = "qtyButton";
-            this.qtyButton.Size = new System.Drawing.Size(90, 29);
-            this.qtyButton.TabIndex = 31;
-            this.qtyButton.Text = "Quantity";
-            this.qtyButton.UseVisualStyleBackColor = true;
-            this.qtyButton.Click += new System.EventHandler(this.qtyButton_Click);
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Location = new System.Drawing.Point(491, 425);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(42, 41);
+            this.button3.TabIndex = 37;
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 562);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -514,6 +526,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button qtyButton;
+        private System.Windows.Forms.Button button3;
     }
 }
 
