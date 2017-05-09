@@ -69,6 +69,10 @@ namespace POSSystem
             {
                 scrollLeftButton.Enabled = false;
             }
+
+            catTogButton.BackColor = Color.Silver;
+            scrollLeftButton.Text = "\u2190";
+            scrollRightButton.Text = "\u2192";
         }
 
 
@@ -675,6 +679,20 @@ namespace POSSystem
             mainListView.SelectedItems.Clear();
 
 
+        }
+
+        private void catTogButton_Click(object sender, EventArgs e)
+        {
+            catTogButton.BackColor = Color.Silver;
+            itemTogButton.BackColor = default(Color);
+            itemTogButton.UseVisualStyleBackColor = true;
+        }
+
+        private void itemTogButton_Click(object sender, EventArgs e)
+        {
+            itemTogButton.BackColor = Color.Silver;
+            catTogButton.BackColor = default(Color);
+            catTogButton.UseVisualStyleBackColor = true;
         }
     }
 }

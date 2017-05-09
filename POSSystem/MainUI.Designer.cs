@@ -64,9 +64,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.qtyButton = new System.Windows.Forms.Button();
             this.removeItemButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.itemTogButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.catTogButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -285,7 +287,7 @@
             // 
             this.totalLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.totalLabel.Font = new System.Drawing.Font("Helvetica Neue", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalLabel.Location = new System.Drawing.Point(289, 82);
+            this.totalLabel.Location = new System.Drawing.Point(290, 88);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(168, 46);
             this.totalLabel.TabIndex = 24;
@@ -296,7 +298,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Helvetica Neue", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(214, 97);
+            this.label2.Location = new System.Drawing.Point(215, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 25;
@@ -306,7 +308,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Helvetica Neue", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(242, 51);
+            this.label3.Location = new System.Drawing.Point(242, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 26;
@@ -316,9 +318,9 @@
             // 
             this.taxLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.taxLabel.Font = new System.Drawing.Font("Helvetica Neue", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taxLabel.Location = new System.Drawing.Point(345, 42);
+            this.taxLabel.Location = new System.Drawing.Point(345, 40);
             this.taxLabel.Name = "taxLabel";
-            this.taxLabel.Size = new System.Drawing.Size(105, 43);
+            this.taxLabel.Size = new System.Drawing.Size(105, 22);
             this.taxLabel.TabIndex = 27;
             this.taxLabel.Text = "$0.00";
             this.taxLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -327,9 +329,9 @@
             // 
             this.subTotalLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.subTotalLabel.Font = new System.Drawing.Font("Helvetica Neue", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subTotalLabel.Location = new System.Drawing.Point(364, 17);
+            this.subTotalLabel.Location = new System.Drawing.Point(364, 18);
             this.subTotalLabel.Name = "subTotalLabel";
-            this.subTotalLabel.Size = new System.Drawing.Size(86, 26);
+            this.subTotalLabel.Size = new System.Drawing.Size(86, 22);
             this.subTotalLabel.TabIndex = 29;
             this.subTotalLabel.Text = "$0.00";
             this.subTotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -378,6 +380,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.qtyButton);
             this.groupBox1.Controls.Add(this.removeItemButton);
             this.groupBox1.Controls.Add(this.totalLabel);
@@ -414,23 +418,15 @@
             this.removeItemButton.UseVisualStyleBackColor = true;
             this.removeItemButton.Click += new System.EventHandler(this.removeItemButton_Click);
             // 
-            // button2
+            // itemTogButton
             // 
-            this.button2.Location = new System.Drawing.Point(637, 425);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 41);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "Item";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(539, 425);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 41);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Category";
-            this.button1.UseVisualStyleBackColor = true;
+            this.itemTogButton.Location = new System.Drawing.Point(637, 425);
+            this.itemTogButton.Name = "itemTogButton";
+            this.itemTogButton.Size = new System.Drawing.Size(92, 41);
+            this.itemTogButton.TabIndex = 36;
+            this.itemTogButton.Text = "Item";
+            this.itemTogButton.UseVisualStyleBackColor = true;
+            this.itemTogButton.Click += new System.EventHandler(this.itemTogButton_Click);
             // 
             // button3
             // 
@@ -442,14 +438,45 @@
             this.button3.TabIndex = 37;
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Helvetica Neue", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(215, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 16);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Discount:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label4.Font = new System.Drawing.Font("Helvetica Neue", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(345, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 22);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "$0.00";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // catTogButton
+            // 
+            this.catTogButton.Location = new System.Drawing.Point(539, 425);
+            this.catTogButton.Name = "catTogButton";
+            this.catTogButton.Size = new System.Drawing.Size(92, 41);
+            this.catTogButton.TabIndex = 38;
+            this.catTogButton.Text = "Category";
+            this.catTogButton.UseVisualStyleBackColor = true;
+            this.catTogButton.Click += new System.EventHandler(this.catTogButton_Click);
+            // 
             // MainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 562);
+            this.Controls.Add(this.catTogButton);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.itemTogButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.itemButton16);
             this.Controls.Add(this.itemButton15);
@@ -523,10 +550,12 @@
         private System.Windows.Forms.Button itemButton13;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button removeItemButton;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button itemTogButton;
         private System.Windows.Forms.Button qtyButton;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button catTogButton;
     }
 }
 
